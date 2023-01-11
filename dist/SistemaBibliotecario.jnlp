@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SistemaBibliotecario.jar" size="168471" download="eager" />
+    <jar href="SistemaBibliotecario.jar" size="172953" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="sistemabibliotecario.SistemaBibliotecario"  name="SistemaBibliotecario" />

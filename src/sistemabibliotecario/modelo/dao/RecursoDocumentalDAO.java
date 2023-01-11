@@ -12,44 +12,6 @@ import sistemabibliotecario.Util.Utilidades;
 import sistemabibliotecario.modelo.pojo.ResultadoOperacion;
 
 public class RecursoDocumentalDAO {
-    public static ArrayList<RecursoDocumental> obtenerRecursoDocumentales() throws SQLException{
-        ArrayList<RecursoDocumental> recursoBD = null;
-        Connection conexionBD = ConexionBD.abrirConexionBD();
-        if(conexionBD != null){
-            try {
-                String consulta = "SELECT idRecursoDocumental, tipoRecurso, titulo, nombreAutor, tema, "
-                        + "clasificacion, coleccion, copias, estado.estado as 'estadoRecurso' "
-                        + "FROM recurso_documental INNER JOIN tipo_recurso ON recurso_documental.tipo_Recurso_idTipoRecurso = tipo_recurso.idTipoRecurso "
-                        + "INNER JOIN estado ON recurso_documental.estado_idEstado = estado.idEstado";
-                PreparedStatement consultaObtenerDatos = conexionBD.prepareStatement(consulta);
-                
-                ResultSet resultadoConsulta = consultaObtenerDatos.executeQuery();
-                
-                recursoBD = new ArrayList<>();
-                
-                while(resultadoConsulta.next()){
-                    RecursoDocumental recursoTemp = new RecursoDocumental();
-                    recursoTemp.setIdRecurso(resultadoConsulta.getInt("idRecursoDocumental"));
-                    recursoTemp.setTipoRecurso(resultadoConsulta.getString("tipoRecurso"));
-                    recursoTemp.setTitulo(resultadoConsulta.getString("titulo"));
-                    recursoTemp.setAutor(resultadoConsulta.getString("nombreAutor"));
-                    recursoTemp.setTema(resultadoConsulta.getString("tema"));
-                    recursoTemp.setClasificacion(resultadoConsulta.getString("clasificacion"));
-                    recursoTemp.setColeccion(resultadoConsulta.getString("coleccion"));
-                    recursoTemp.setCopias(resultadoConsulta.getInt("copias"));
-                    recursoTemp.setEstado(resultadoConsulta.getString("estadoRecurso"));
-                    recursoBD.add(recursoTemp);
-                }
-            } catch (SQLException s) {
-                s.printStackTrace();
-            } finally {
-                conexionBD.close();
-            }
-        }
-        return recursoBD;
-        
-    }
-    
     public static ArrayList<RecursoDocumental> obtenerRecursoPorBiblioteca (int idBiblioteca) throws SQLException{
         ArrayList<RecursoDocumental> recursoBD = null;
         Connection conexionBD = ConexionBD.abrirConexionBD();
@@ -199,21 +161,21 @@ public class RecursoDocumentalDAO {
         return resultado;
     }
     
-    public static ArrayList<RecursoDocumental> obtenerRecurso(String recurso, String texto) throws SQLException{
+    public static ArrayList<RecursoDocumental> obtenerRecurso(String recurso, String termino, String texto) throws SQLException{
         ArrayList<RecursoDocumental> recursoBD = null;
         Connection conexionBD = ConexionBD.abrirConexionBD();
         if(conexionBD != null){
             try {
-                String consulta = "SELECT idRecursoDocumental, tipoRecurso, titulo, nombreAutor, tema, clasificacion, coleccion"
-                                + " FROM tipo_recurso INNER JOIN recurso_documental ON idTipoRecurso = tipo_Recurso_idTipoRecurso"
-                                + " WHERE tipoRecurso = ? AND titulo LIKE ?";
+                String consulta = "SELECT idRecursoDocumental, tipo_recurso.tipoRecurso, titulo, nombreAutor, tema, clasificacion, coleccion "
+                                + "FROM recurso_documental INNER JOIN tipo_recurso ON tipo_recurso.idTipoRecurso = recurso_documental.tipo_Recurso_idTipoRecurso "
+                                + "LEFT JOIN biblioteca_recurso ON biblioteca_recurso.recurso_documental_idRecursoDocumental = recurso_documental.idRecursoDocumental "
+                                + "WHERE tipoRecurso = ? AND biblioteca_recurso.biblioteca_idBiblioteca = 1 AND " + termino + " LIKE ?";
                 PreparedStatement consultaObtenerDatos = conexionBD.prepareStatement(consulta);
                 
                 consultaObtenerDatos.setString(1, recurso);
-                consultaObtenerDatos.setString(2, texto);
+                consultaObtenerDatos.setString(2, "%" + texto + "%");
                 
                 ResultSet resultadoConsulta = consultaObtenerDatos.executeQuery();
-                
                 recursoBD = new ArrayList<>();
                 
                 while(resultadoConsulta.next()){
@@ -259,89 +221,5 @@ public class RecursoDocumentalDAO {
             }
         }
         return tipoRecursoBD;
-    }
-    
-    public static ArrayList<RecursoDocumental> tipoBusqueda() throws SQLException{
-        ArrayList<RecursoDocumental> tipoBusquedaBD = null;
-        Connection conexionBD = ConexionBD.abrirConexionBD();
-        if(conexionBD != null){
-            try {
-                String consulta = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'recurso_documental' "
-                                + "AND (COLUMN_NAME = 'titulo' OR COLUMN_NAME = 'nombreAutor' OR COLUMN_NAME = 'tema')";
-                PreparedStatement consultaObtenerDatos = conexionBD.prepareStatement(consulta);
-                
-                ResultSet resultadoConsulta = consultaObtenerDatos.executeQuery();
-                
-                tipoBusquedaBD = new ArrayList<>();
-                
-                while(resultadoConsulta.next()){
-                    RecursoDocumental recursoTemp = new RecursoDocumental();
-                    switch(resultadoConsulta.getString("COLUMN_NAME")){
-                        case "titulo":
-                            recursoTemp.setTipoRecurso("Título");
-                            break;
-                        case "nombreAutor":
-                            recursoTemp.setTipoRecurso("Autor");
-                            break;
-                        case "tema":
-                            recursoTemp.setTipoRecurso("Tema");
-                            break;
-                    }
-                    tipoBusquedaBD.add(recursoTemp);
-                }
-            } catch (SQLException s) {
-                s.printStackTrace();
-            } finally {
-                conexionBD.close();
-            }
-        }
-        return tipoBusquedaBD;
-    }
-    
-    public static ArrayList<RecursoDocumental> obtenerTitulo() throws SQLException{
-        ArrayList<RecursoDocumental> tituloBD = null;
-        Connection conexionBD = ConexionBD.abrirConexionBD();
-        if(conexionBD != null){
-            try {
-                String consulta = "SELECT tipoRecurso, titulo FROM recurso_documental "
-                                + "INNER JOIN tipo_recurso ON tipo_recurso.idTipoRecurso = recurso_documental.tipo_Recurso_idTipoRecurso";
-                PreparedStatement consultaObtenerDatos = conexionBD.prepareStatement(consulta);
-                
-                ResultSet resultadoConsulta = consultaObtenerDatos.executeQuery();
-                
-                tituloBD = new ArrayList<>();
-                
-                while(resultadoConsulta.next()){
-                    RecursoDocumental recursoTemp = new RecursoDocumental();
-                    recursoTemp.setTitulo(resultadoConsulta.getString("titulo"));
-                    tituloBD.add(recursoTemp);
-                }
-            } catch (SQLException s) {
-                s.printStackTrace();
-            } finally {
-                conexionBD.close();
-            }
-        }
-        return tituloBD;
-    }
-    
-    public static int registrarRecurso(RecursoDocumental nuevoRecurso) throws SQLException{
-        int numeroFilas = -1;
-        Connection conexionBD = ConexionBD.abrirConexionBD();
-        if(conexionBD != null){
-            try {
-                String sentencia = "UPDATE copias FROM recurso_documental WHERE idRecursoDocumental = ?";
-                PreparedStatement sentenciaActualizarDatos = conexionBD.prepareStatement(sentencia);
-                
-                sentenciaActualizarDatos.setInt(1, nuevoRecurso.getCopias());
-                
-                numeroFilas = sentenciaActualizarDatos.executeUpdate();
-            } catch (SQLException s) {
-                s.printStackTrace();
-            } finally {
-                conexionBD.close();
-            }
-        }
-        return numeroFilas;
     }
 }
