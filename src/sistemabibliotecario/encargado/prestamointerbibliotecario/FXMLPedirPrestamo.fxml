@@ -31,8 +31,9 @@
         <columns>
           <TableColumn fx:id="colCodigoBarras" prefWidth="121.0" text="Código de barras" />
           <TableColumn fx:id="colTitulo" prefWidth="200.0" text="Título" />
-            <TableColumn fx:id="colAutor" prefWidth="201.0" text="Autor" />
-            <TableColumn fx:id="colClasificacion" prefWidth="209.0" text="Clasificación" />
+            <TableColumn fx:id="colAutor" prefWidth="127.0" text="Autor" />
+            <TableColumn fx:id="colClasificacion" prefWidth="138.0" text="Clasificación" />
+            <TableColumn fx:id="colTipoRecurso" prefWidth="145.0" text="Tipo de recurso" />
         </columns>
       </TableView>
       <Label layoutX="429.0" layoutY="94.0" text="Título de recurso" />

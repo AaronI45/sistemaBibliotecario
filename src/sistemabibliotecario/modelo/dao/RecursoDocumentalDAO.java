@@ -63,8 +63,8 @@ public class RecursoDocumentalDAO {
                         +"INNER JOIN biblioteca ON biblioteca_recurso.biblioteca_idBiblioteca = biblioteca.idBiblioteca "
                         +"INNER JOIN estado ON estado_idEstado = estado.idEstado "
                         +"LEFT JOIN recurso_documental ON biblioteca_recurso.recurso_documental_idRecursoDocumental = recurso_documental.idRecursoDocumental "
-                        +"LEFT JOIN tipo_recurso ON recurso_documental.idRecursoDocumental = tipo_recurso.idTipoRecurso "
-                        +"WHERE biblioteca_recurso.biblioteca_idBiblioteca = ? ";
+                        +"LEFT JOIN tipo_recurso ON recurso_documental.tipo_Recurso_idTipoRecurso = tipo_recurso.idTipoRecurso "
+                        +"WHERE biblioteca_recurso.biblioteca_idBiblioteca = ?";
                 PreparedStatement consultaObtenerDatos = conexionBD.prepareStatement(consulta);
                 
                 consultaObtenerDatos.setInt(1, idBiblioteca);
@@ -101,7 +101,7 @@ public class RecursoDocumentalDAO {
         return recursoBD;
     }
     
-    public static ResultadoOperacion editarCopias(RecursoDocumental recursoAEditar,int idBiblioteca, int cantidad, int tipoEdicion){
+    public static ResultadoOperacion editarCopias(RecursoDocumental recursoAEditar,int idBiblioteca, int cantidad, int tipoEdicion) throws SQLException{
         ResultadoOperacion resultadoEdicion = new ResultadoOperacion();
         
         resultadoEdicion.setError(true);
@@ -139,6 +139,8 @@ public class RecursoDocumentalDAO {
                 }
             } catch (SQLException e) {
                 resultadoEdicion.setMensaje(e.getMessage());
+            }finally{
+                conexionBD.close();
             }
         }else{
             resultadoEdicion.setMensaje("No hay conexión a la base de datos");
@@ -167,6 +169,34 @@ public class RecursoDocumentalDAO {
                 conexionBD.close();
             }
         }
+    }
+    
+    public static ResultadoOperacion registrarRecursoDaniadoPorIdRecurso(int idRecursoDocuemental, int idBiblioteca) throws SQLException{
+        ResultadoOperacion resultado = new ResultadoOperacion();
+        resultado.setError(true);
+        resultado.setNumeroFilasAfectadas(-1);
+        Connection conexionBD = ConexionBD.abrirConexionBD();
+        if(conexionBD != null){
+            try {
+                String sentencia = "INSERT INTO recurso_daniado (biblioteca_recurso_recurso_documental_idRecursoDocumental "
+                        + ",biblioteca_recurso_biblioteca_idBiblioteca) "
+                        + "VALUES (?,?) ";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(sentencia);
+                prepararSentencia.setInt(1, idRecursoDocuemental);
+                prepararSentencia.setInt(2, idBiblioteca);
+                int numeroFilas = prepararSentencia.executeUpdate();
+                if(numeroFilas >0){
+                    resultado.setMensaje("El recurso documental ha sido registrado como dañado");
+                }else{
+                    resultado.setMensaje("El recurso documental no se ha podido registrar como dañado");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally{
+                conexionBD.close();
+            }
+        }
+        return resultado;
     }
     
     public static ArrayList<RecursoDocumental> obtenerRecurso(String recurso, String texto) throws SQLException{
