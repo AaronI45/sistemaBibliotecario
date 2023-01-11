@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemabibliotecario.encargado.buscarrecurso.FXMLBuscarRecursoController">
+   <children>
+      <Label layoutX="25.0" layoutY="32.0" text="Buscar recurso documental">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbTipoRecurso" layoutX="25.0" layoutY="74.0" prefWidth="150.0" promptText="Tipo de recurso" />
+      <ComboBox fx:id="cbTipoBusqueda" layoutX="198.0" layoutY="74.0" prefWidth="150.0" promptText="Tipo de búsqueda" />
+      <TextField fx:id="tfTerminoBuscar" layoutX="375.0" layoutY="74.0" prefWidth="250.0" promptText="Ej. Java para Programadores" />
+      <Button layoutX="650.0" layoutY="72.0" mnemonicParsing="false" onAction="#clicBtnBuscar" prefWidth="75.0" text="Buscar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="650.0" layoutY="346.0" mnemonicParsing="false" onAction="#clicBtnVolver" prefWidth="75.0" text="Volver">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tvResutadoBusqueda" layoutX="25.0" layoutY="127.0" prefHeight="200.0" prefWidth="700.0">
+        <columns>
+          <TableColumn fx:id="tcTitulo" prefWidth="225.0" text="Título" />
+          <TableColumn fx:id="tcAutor" minWidth="0.0" prefWidth="175.0" text="Autor" />
+            <TableColumn fx:id="tcTema" prefWidth="100.0" text="Tema" />
+            <TableColumn fx:id="tcClasificacion" prefWidth="100.0" text="Clasificación" />
+            <TableColumn fx:id="tcColeccion" prefWidth="100.0" text="Colección" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

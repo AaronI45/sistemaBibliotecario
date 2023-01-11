@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="826.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemabibliotecario.secretario.registrarcobro.FXMLRegistroCobroController">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="826.0" style="-fx-background-color: #005BAA;">
+         <children>
+            <Label layoutX="40.0" layoutY="12.0" text="Registro de cobro de adeudo" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TableView fx:id="tvAdeudos" layoutX="163.0" layoutY="182.0" prefHeight="200.0" prefWidth="501.0" stylesheets="@../../css/estiloPantallas.css">
+        <columns>
+          <TableColumn fx:id="colFechaAdeudo" prefWidth="128.0" text="Fecha de adeudo" />
+          <TableColumn fx:id="colMonto" minWidth="0.0" prefWidth="183.0" text="Monto a pagar" />
+            <TableColumn fx:id="colEstudiante" prefWidth="189.0" text="Nombre de estudiante" />
+        </columns>
+      </TableView>
+      <Label layoutX="125.0" layoutY="102.0" text="Matricula estudiante" />
+      <TextField fx:id="tfMatricula" layoutX="257.0" layoutY="97.0" prefHeight="25.0" prefWidth="284.0" styleClass="textField" stylesheets="@../../css/estiloPantallas.css" />
+      <Button layoutX="680.0" layoutY="437.0" mnemonicParsing="false" onAction="#clicVolver" prefHeight="25.0" prefWidth="100.0" styleClass="buttonCancelar" stylesheets="@../../css/estiloPantallas.css" text="Volver" />
+      <Button layoutX="552.0" layoutY="98.0" mnemonicParsing="false" onAction="#clicBuscar" prefHeight="23.0" prefWidth="23.0" styleClass="buttonGeneral" stylesheets="@../../css/estiloPantallas.css">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../iconos/icons8_search_32px_3.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="646.0" layoutY="97.0" mnemonicParsing="false" onAction="#clicCobrarAdeudo" styleClass="buttonPrincipal" stylesheets="@../../css/estiloPantallas.css" text="Cobrar adeudo" />
+   </children>
+</AnchorPane>

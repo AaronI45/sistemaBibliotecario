@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="826.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemabibliotecario.encargado.prestamointerbibliotecario.FXMLPrestamoABibliotecaController">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="826.0" style="-fx-background-color: #005BAA;">
+         <children>
+            <Label layoutX="40.0" layoutY="12.0" text="Préstamo a otra biblioteca" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TableView fx:id="tvRecursos" layoutX="47.0" layoutY="190.0" prefHeight="200.0" prefWidth="732.0" stylesheets="@../../css/estiloPantallas.css">
+        <columns>
+          <TableColumn fx:id="colCodigoBarras" prefWidth="121.0" text="Código de barras" />
+          <TableColumn fx:id="colTitulo" prefWidth="200.0" text="Título" />
+            <TableColumn fx:id="colAutor" prefWidth="201.0" text="Autor" />
+            <TableColumn fx:id="colClasificacion" prefWidth="209.0" text="Clasificación" />
+        </columns>
+      </TableView>
+      <Button layoutX="680.0" layoutY="146.0" mnemonicParsing="false" onAction="#clicAgregar" prefHeight="25.0" prefWidth="100.0" styleClass="buttonPrincipal" stylesheets="@../../css/estiloPantallas.css" text="Agregar" />
+      <Button layoutX="680.0" layoutY="437.0" mnemonicParsing="false" onAction="#clicVolver" prefHeight="25.0" prefWidth="100.0" styleClass="buttonCancelar" stylesheets="@../../css/estiloPantallas.css" text="Volver" />
+      <Label layoutX="48.0" layoutY="94.0" text="Título de recurso" />
+      <Label layoutX="48.0" layoutY="150.0" text="Matrícula / Número de personal" />
+      <TextField fx:id="tfTituloRecurso" layoutX="303.0" layoutY="94.0" prefWidth="195.0" promptText="Ej: Aprende java ahora" styleClass="textField" stylesheets="@../../css/estiloPantallas.css" />
+      <TextField fx:id="tfMatricula" layoutX="303.0" layoutY="146.0" prefHeight="25.0" prefWidth="195.0" promptText="Ej: S20015694" styleClass="textField" stylesheets="@../../css/estiloPantallas.css" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,81 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 18, 2022, 12:24:18 AM
+    Author     : super
+*/
+
+.buttonCancelar{
+    -fx-background-color:  #f52424;
+    -fx-text-fill: white;
+}
+
+.buttonCancelar:hover{
+    -fx-background-color: #F86D6D;
+    -fx-cursor: hand;
+}
+
+.buttonCancelar:pressed{
+    -fx-background-color: #FBB6B6;
+}
+
+.buttonDashboard{
+   -fx-background-color: #D6D6D6;
+}
+
+.buttonDashboard:hover{
+    -fx-background-color: #CCCCCC;
+    -fx-cursor: hand;
+}
+
+.buttonDashboard:focused{
+    -fx-background-color: #00AB4F;
+}
+
+.buttonDashboard:pressed{
+    -fx-background-color: #55C789;
+}
+
+.buttonGeneral{
+    -fx-background-color: #D6D6D6;
+}
+
+.buttonGeneral:hover{
+    -fx-background-color: #CCCCCC;
+    -fx-cursor: hand;
+}
+
+.buttonGeneral:pressed{
+    -fx-background-color: #7F7F7F;
+}
+
+.buttonPrincipal{
+    -fx-background-color: #00AB4F;
+    -fx-text-fill: #FFFFFF;
+}
+
+.buttonPrincipal:hover{
+    -fx-background-color: #55C789;
+    -fx-cursor: hand;
+}
+
+.buttonPrincipal:pressed{
+    -fx-background-color: #AAE3C4;
+}
+
+.textField{
+    -fx-border-color: #FFFFFF;
+    -fx-background-color:  #f2f2f2;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler{
+    -fx-background-color: #00519E;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}

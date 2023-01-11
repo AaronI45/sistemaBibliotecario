@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/css/estiloInicioSesion.css</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/css/estiloPantallas.css</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/prestamointerbibliotecario/FXMLPrestamoABibliotecaController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/dao/RecursoDocumentalDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/registrarrecursodonado/FXMLRegistrarRecursoDonadoController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/registrarrecursodaniado/FXMLRegistrarRecursoDaniado.fxml</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/pojo/Deuda.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/pojo/Staff.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/prestamointerbibliotecario/FXMLPrestamoABiblioteca.fxml</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/prestamointerbibliotecario/FXMLSeleccionPrestamoInterbibliotecarioController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/pojo/RecursoDocumental.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/pojo/PrestamoInterbibliotecario.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/pojo/Usuario.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/dao/DeudaDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/dao/PrestamoDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/secretario/registrarcobro/FXMLRegistroCobro.fxml</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/FXMLInicioSesionController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/secretario/FXMLInicioSecretarioController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/dao/StaffDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/FXMLInicioEncargadoController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/secretario/registrarcobro/FXMLRegistroCobroController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/prestamointerbibliotecario/FXMLPedirPrestamoController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/modelo/pojo/Prestamo.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/5to/Principios%20de%20construcción/proyecto/SistemaBibliotecario/src/sistemabibliotecario/encargado/registrarrecursodaniado/FXMLRegistrarRecursoDaniadoController.java</file>
+        </group>
+    </open-files>
+</project-private>
