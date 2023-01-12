@@ -62,7 +62,7 @@ public class FXMLRegistrarRecursoDonadoController implements Initializable {
                     if(!resultadoDonacion.isError()){
                         Utilidades.mostrarAlertaSimple("Éxito en el registro de donación", 
                                 resultadoDonacion.getMensaje(), Alert.AlertType.INFORMATION);
-                        cerrarVentana();
+                        cargarDatosTabla();
                     }else{
                         Utilidades.mostrarAlertaSimple("Error en el registro de donación", 
                                 resultadoDonacion.getMensaje(), Alert.AlertType.ERROR);

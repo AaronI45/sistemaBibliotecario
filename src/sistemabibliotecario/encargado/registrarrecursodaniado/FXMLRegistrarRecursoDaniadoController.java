@@ -70,6 +70,7 @@ public class FXMLRegistrarRecursoDaniadoController implements Initializable {
                     if(!resultado.isError()){
                         Utilidades.mostrarAlertaSimple("Éxito en el registro de recurso dañado", resultado.getMensaje(), 
                                 Alert.AlertType.INFORMATION);
+                        cargarDatosTabla();
                     }else{
                         Utilidades.mostrarAlertaSimple("Error en el registro de recurso dañado", resultado.getMensaje(), 
                                 Alert.AlertType.ERROR);
@@ -94,7 +95,7 @@ public class FXMLRegistrarRecursoDaniadoController implements Initializable {
         this.idBiblioteca = idBiblioteca;
     }
     
-        private void configurarTabla(){
+    private void configurarTabla(){
         colCodigoBarras.setCellValueFactory(new PropertyValueFactory("codigoBarras"));
         colTitulo.setCellValueFactory(new PropertyValueFactory("titulo"));
         colAutor.setCellValueFactory(new PropertyValueFactory("autor"));
@@ -106,7 +107,13 @@ public class FXMLRegistrarRecursoDaniadoController implements Initializable {
         try {
             listaRecursos = FXCollections.observableArrayList();
             ArrayList<RecursoDocumental> recursosBD = RecursoDocumentalDAO.obtenerRecursoPorBiblioteca(idBiblioteca);
-            listaRecursos.addAll(recursosBD);
+            ArrayList<RecursoDocumental> recursosDisponibles = new ArrayList<>();
+            for (int i = 0 ; i<recursosBD.size() ; i++){
+                if(recursosBD.get(i).getIdEstado()== RecursoDocumental.DISPONIBLE){
+                    recursosDisponibles.add(recursosBD.get(i));
+                }
+            }
+            listaRecursos.addAll(recursosDisponibles);
             tvRecursos.setItems(listaRecursos);
         } catch (SQLException e) {
             e.printStackTrace();

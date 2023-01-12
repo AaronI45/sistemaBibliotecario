@@ -93,8 +93,10 @@ public class RecursoDocumentalDAO {
                     resultadoEdicion.setMensaje("El número de copias se ha actualizado");
                     resultadoEdicion.setError(false);
                     resultadoEdicion.setNumeroFilasAfectadas(numeroFilas);
-                    if(numeroCopiasNuevo == 0){
+                    if(numeroCopiasNuevo == 0 && tipoEdicion == RecursoDocumental.RESTA_COPIAS){
                         cambiarEstadoRecurso(recursoAEditar, idBiblioteca, RecursoDocumental.NO_DISPONIBLE);
+                    }else if(numeroCopiasNuevo == 0 && tipoEdicion == RecursoDocumental.SUMA_COPIAS){
+                        cambiarEstadoRecurso(recursoAEditar, idBiblioteca, RecursoDocumental.DISPONIBLE);                        
                     }
                 }else{
                     resultadoEdicion.setMensaje("No se pudo editar el número de copias");
@@ -148,6 +150,7 @@ public class RecursoDocumentalDAO {
                 prepararSentencia.setInt(2, idBiblioteca);
                 int numeroFilas = prepararSentencia.executeUpdate();
                 if(numeroFilas >0){
+                    resultado.setError(false);
                     resultado.setMensaje("El recurso documental ha sido registrado como dañado");
                 }else{
                     resultado.setMensaje("El recurso documental no se ha podido registrar como dañado");
