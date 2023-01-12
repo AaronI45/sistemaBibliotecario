@@ -45,6 +45,7 @@ public class FXMLSeleccionPrestamoInterbibliotecarioController implements Initia
             FXMLPrestamoABibliotecaController prestamoABiblioteca = accesoControlador.getController();
             prestamoABiblioteca.inicializarIdBiblioteca(idBiblioteca);
             prestamoABiblioteca.cargarDatosTabla(idBiblioteca);
+            prestamoABiblioteca.inicializarBusquedaRecurso();
             Scene escenaPrestamoAOtraBiblioteca = new Scene(vista);
             Stage escenario = (Stage) botonVolver.getScene().getWindow();
             escenario.setScene(escenaPrestamoAOtraBiblioteca);

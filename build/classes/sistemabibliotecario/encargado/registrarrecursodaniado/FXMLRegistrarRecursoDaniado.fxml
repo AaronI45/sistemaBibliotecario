@@ -29,9 +29,9 @@
             <TableColumn fx:id="colEstado" prefWidth="136.0" text="Estado" />
         </columns>
       </TableView>
-      <TextField fx:id="tfTitiulo" layoutX="273.0" layoutY="102.0" prefHeight="25.0" prefWidth="337.0" styleClass="textField" stylesheets="@../../css/estiloPantallas.css" />
+      <TextField fx:id="tfTitiulo" layoutX="273.0" layoutY="102.0" prefHeight="25.0" prefWidth="337.0" promptText="Ej: aprenda Java ahora" styleClass="textField" stylesheets="@../../css/estiloPantallas.css" />
       <Label layoutX="142.0" layoutY="107.0" text="Título de recurso" />
-      <Button layoutX="680.0" layoutY="146.0" mnemonicParsing="false" onAction="#clicRegistrar" prefHeight="25.0" prefWidth="100.0" styleClass="buttonPrincipal" stylesheets="@../../css/estiloPantallas.css" text="Button" />
-      <Button layoutX="680.0" layoutY="437.0" mnemonicParsing="false" onAction="#clicVolver" prefHeight="25.0" prefWidth="100.0" styleClass="buttonCancelar" stylesheets="@../../css/estiloPantallas.css" text="Button" />
+      <Button layoutX="680.0" layoutY="146.0" mnemonicParsing="false" onAction="#clicRegistrar" prefHeight="25.0" prefWidth="100.0" styleClass="buttonPrincipal" stylesheets="@../../css/estiloPantallas.css" text="Registrar" />
+      <Button layoutX="680.0" layoutY="437.0" mnemonicParsing="false" onAction="#clicVolver" prefHeight="25.0" prefWidth="100.0" styleClass="buttonCancelar" stylesheets="@../../css/estiloPantallas.css" text="Volver" />
    </children>
 </AnchorPane>

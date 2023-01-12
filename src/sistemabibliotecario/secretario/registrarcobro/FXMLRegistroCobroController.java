@@ -87,18 +87,22 @@ public class FXMLRegistroCobroController implements Initializable {
     private void clicCobrarAdeudo(ActionEvent event) {
         Deuda seleccionDeuda = verificarSeleccionDeuda();
         if (seleccionDeuda != null){
-            try {
+            boolean confirmacionCobro = Utilidades.mostrarDialogoConfirmacion("Confirmación de cobro", 
+                    "¿Está seguro de cobrar el adeudo seleccionado?");
+            if(confirmacionCobro){
+                try {
                 ResultadoOperacion resultadoPago = pagarDeuda(seleccionDeuda.getIdDeuda());
                 if(!resultadoPago.isError()){
                     Utilidades.mostrarAlertaSimple("Éxito en el pago de deuda", resultadoPago.getMensaje(), 
                             Alert.AlertType.INFORMATION);
-                    cerrarVentana();
+                    cargarDatosTabla();
                 }else{
                     Utilidades.mostrarAlertaSimple("Error en el pago de deuda", resultadoPago.getMensaje(), 
                             Alert.AlertType.ERROR);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }else{
             Utilidades.mostrarAlertaSimple("Error de selección", "Por favor seleccione un adeudo a cobrar de la tabla", 

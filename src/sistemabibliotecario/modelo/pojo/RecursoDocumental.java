@@ -20,6 +20,7 @@ public class RecursoDocumental {
     public static final int SUMA_COPIAS = 1;
     public static final int RESTA_COPIAS = 2;
     public static final int CANTIDAD_DONADO = 1;
+    public static final int CANTIDAD_DANIADO = 1;
 
     public RecursoDocumental() {
     }

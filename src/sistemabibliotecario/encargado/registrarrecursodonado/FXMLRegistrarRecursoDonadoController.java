@@ -55,13 +55,21 @@ public class FXMLRegistrarRecursoDonadoController implements Initializable {
         if (recursoSeleccionado != null){
             boolean confirmarDonacion = Utilidades.mostrarDialogoConfirmacion("Confirmar donación", "¿Está seguro de realizar la donación?");
             if(confirmarDonacion){
-                ResultadoOperacion resultadoDonacion = 
-                        RecursoDocumentalDAO.editarCopias(recursoSeleccionado, idBiblioteca, RecursoDocumental.CANTIDAD_DONADO, RecursoDocumental.SUMA_COPIAS);
-                if(!resultadoDonacion.isError()){
-                    Utilidades.mostrarAlertaSimple("Éxito en el registro de donación", resultadoDonacion.getMensaje(), Alert.AlertType.INFORMATION);
-                    cerrarVentana();
-                }else{
-                    Utilidades.mostrarAlertaSimple("Error en el registro de donación", resultadoDonacion.getMensaje(), Alert.AlertType.ERROR);
+                try {
+                    ResultadoOperacion resultadoDonacion = 
+                    RecursoDocumentalDAO.editarCopias(recursoSeleccionado, idBiblioteca, 
+                            RecursoDocumental.CANTIDAD_DONADO, RecursoDocumental.SUMA_COPIAS);
+                    if(!resultadoDonacion.isError()){
+                        Utilidades.mostrarAlertaSimple("Éxito en el registro de donación", 
+                                resultadoDonacion.getMensaje(), Alert.AlertType.INFORMATION);
+                        cargarDatosTabla();
+                    }else{
+                        Utilidades.mostrarAlertaSimple("Error en el registro de donación", 
+                                resultadoDonacion.getMensaje(), Alert.AlertType.ERROR);
+                    }
+                } catch (SQLException e) {
+                    Utilidades.mostrarAlertaSimple("Error de conexión", "No hay ocnexión con la base de datos", 
+                            Alert.AlertType.ERROR);
                 }
             }
         }else{

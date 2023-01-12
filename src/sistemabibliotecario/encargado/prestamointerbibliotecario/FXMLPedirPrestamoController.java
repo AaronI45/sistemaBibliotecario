@@ -63,6 +63,8 @@ public class FXMLPedirPrestamoController implements Initializable {
     @FXML
     private TableColumn colClasificacion;
     @FXML
+    private TableColumn colTipoRecurso;
+    @FXML
     private TextField tfTituloRecurso;
     @FXML
     private TextField tfMatricula;
@@ -162,6 +164,7 @@ public class FXMLPedirPrestamoController implements Initializable {
         colTitulo.setCellValueFactory(new PropertyValueFactory("titulo"));
         colAutor.setCellValueFactory(new PropertyValueFactory("autor"));
         colClasificacion.setCellValueFactory(new PropertyValueFactory("clasificacion"));
+        colTipoRecurso.setCellValueFactory(new PropertyValueFactory("tipoRecurso"));
     }
     
     private void cargarDatosTabla(int idBiblioteca){

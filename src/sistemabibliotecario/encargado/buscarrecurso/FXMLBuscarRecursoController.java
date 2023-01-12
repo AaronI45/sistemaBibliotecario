@@ -1,6 +1,8 @@
 package sistemabibliotecario.encargado.buscarrecurso;
 
+import sistemabibliotecario.modelo.dao.BusquedaDAO;
 import sistemabibliotecario.modelo.dao.RecursoDocumentalDAO;
+import sistemabibliotecario.modelo.pojo.Busqueda;
 import sistemabibliotecario.modelo.pojo.RecursoDocumental;
 import sistemabibliotecario.Util.Utilidades;
 import java.net.URL;
@@ -19,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import sistemabibliotecario.modelo.pojo.RecursoDocumental;
 
 /**
  * FXML Controller class
@@ -32,11 +35,11 @@ public class FXMLBuscarRecursoController implements Initializable {
     @FXML
     private ComboBox<RecursoDocumental> cbTipoRecurso;
     @FXML
-    private ComboBox<RecursoDocumental> cbTipoBusqueda;
+    private ComboBox<Busqueda> cbTipoBusqueda;
     
     private ObservableList<RecursoDocumental> listaTipoRecurso;
     
-    private ObservableList<RecursoDocumental> listaTipoBusqueda;
+    private ObservableList<Busqueda> listaTipoBusqueda;
     
     @FXML
     private TableView<RecursoDocumental> tvResutadoBusqueda;
@@ -89,7 +92,7 @@ public class FXMLBuscarRecursoController implements Initializable {
     private void cargarTipoBusqueda(){
         listaTipoBusqueda = FXCollections.observableArrayList();
         try {
-            ArrayList<RecursoDocumental> tipoBusquedaBD = RecursoDocumentalDAO.tipoBusqueda();
+            ArrayList<Busqueda> tipoBusquedaBD = BusquedaDAO.tipoBusqueda();
             listaTipoBusqueda.addAll(tipoBusquedaBD);
             cbTipoBusqueda.setItems(listaTipoBusqueda);
         } catch (SQLException s) {
@@ -117,8 +120,12 @@ public class FXMLBuscarRecursoController implements Initializable {
         try {
             listaRecursos = FXCollections.observableArrayList();
             String recurso = cbTipoRecurso.getSelectionModel().getSelectedItem().toString();
+            String termino = cbTipoBusqueda.getSelectionModel().getSelectedItem().toString();
+            if(termino.equals("Autor")){
+                termino = "nombreAutor";
+            }
             String texto = tfTerminoBuscar.getText();
-            ArrayList<RecursoDocumental> recursosBD = RecursoDocumentalDAO.obtenerRecurso(recurso, texto);
+            ArrayList<RecursoDocumental> recursosBD = RecursoDocumentalDAO.obtenerRecurso(recurso, termino, texto);
             if(!recursosBD.isEmpty()){
                 listaRecursos.addAll(recursosBD);
                 tvResutadoBusqueda.setItems(listaRecursos);
